@@ -10,7 +10,8 @@
     "push": "npx prisma db push",
     "pgen": "npx prisma generate --no-engine",
     "cld-deploy": "wrangler deploy",
-    "cld-dev": "wrangler dev --port=50662"
+    "cld-dev": "wrangler dev --port=50662",
+    "ppush": "dotenv -e .env.local -- yarn prisma db push --skip-generate"
   },
   "dependencies": {
     "@next/font": "13.1.4",

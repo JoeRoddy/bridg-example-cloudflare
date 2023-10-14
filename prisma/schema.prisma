@@ -15,15 +15,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Log {
-  id      String @id @default(cuid())
-  level   Level
-  message String
-  meta    Json
+model User {
+  name  String?
+  email String? @unique
+  image String?
+  blogs Blog[]
+
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-enum Level {
-  Info
-  Warn
-  Error
+model Blog {
+  title String
+  body  String?
+
+  published Boolean @default(false)
+  viewCount Int     @default(0)
+  user      User?   @relation(fields: [userId], references: [id])
+  userId    String?
+
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
