@@ -1,13 +1,13 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 generator bridg {
   provider = "bridg"
+  // local dev
   api      = "http://localhost:50000"
+  // deployed worker: npx wrangler deploy
+  // api      = "https://<your-cloudflare-project>.workers.dev"
 }
 
 datasource db {
