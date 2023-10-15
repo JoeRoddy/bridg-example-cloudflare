@@ -7,7 +7,7 @@ generator client {
 
 generator bridg {
   provider = "bridg"
-  api      = "http://127.0.0.1:50662/"
+  api      = "http://localhost:50000"
 }
 
 datasource db {

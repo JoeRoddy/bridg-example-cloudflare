@@ -4,18 +4,20 @@ import { NextPage } from 'next';
 
 const BridgExample: NextPage = ({}) => {
   // Query your DB from the frontend 😎
-  console.log('bridg', bridg);
-
   const data = useAsync(() =>
     bridg.user.findMany({
       // uncomment to filter your results:
-      // where: { email: { contains: 'alice@prisma' } },
+      // where: { email: { contains: 'user1@' } },
       // uncomment include related data:
-      include: { blogs: true },
+      // include: { blogs: true },
     }),
   );
 
-  return data !== undefined ? <pre>{JSON.stringify(data, null, 1)}</pre> : <div>hey</div>;
+  return data !== undefined ? (
+    <pre>{JSON.stringify(data, null, 1)}</pre>
+  ) : (
+    <button onClick={() => seedDb().then(window.location.reload)}>Seed database</button>
+  );
 };
 
 export default BridgExample;

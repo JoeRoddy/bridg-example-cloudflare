@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "yarn cld-dev",
+    "dev": "rm -rf .next && npx concurrently 'npm run cld-dev' 'next dev'",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "push": "npx prisma db push",
     "pgen": "npx prisma generate --no-engine",
     "cld-deploy": "wrangler deploy",
-    "cld-dev": "wrangler dev --port=50662",
+    "cld-dev": "wrangler dev --port=50000",
     "ppush": "dotenv -e .env.local -- yarn prisma db push --skip-generate"
   },
   "dependencies": {
